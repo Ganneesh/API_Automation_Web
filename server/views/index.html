@@ -4,23 +4,87 @@
   <meta charset="UTF-8">
   <title>Ganesh API Automation Hub</title>
   <style>
-    body { font-family: Arial; padding: 2rem; }
-    h1 { color: #333; }
-    code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
-    ul { line-height: 1.8; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fc;
+      color: #333;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 28px;
+      color: #4a4a4a;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 16px;
+      text-align: center;
+    }
+    .endpoint-list {
+      margin-top: 2rem;
+    }
+    .endpoint {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: white;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .method {
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-right: 10px;
+      font-size: 13px;
+      color: white;
+      min-width: 55px;
+      text-align: center;
+    }
+    .GET { background: #5cb85c; }
+    .POST { background: #0275d8; }
+    .PUT { background: #f0ad4e; }
+    .DELETE { background: #d9534f; }
+    code {
+      font-family: monospace;
+      background: #f1f1f1;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 14px;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
+
   <h1>👋 Welcome to Ganesh API Automation Hub</h1>
-  <p>This is a practice site for API automation testers. Try the following endpoints:</p>
-  <ul>
-    <li><code>GET /users?page=1</code></li>
-    <li><code>GET /users/:id</code></li>
-    <li><code>POST /users</code></li>
-    <li><code>PUT /users/:id</code></li>
-    <li><code>DELETE /users/:id</code></li>
-    <li><code>POST /login</code></li>
-  </ul>
-  <p>📄 Swagger Docs: <a href="/api-docs">/api-docs</a></p>
+  <p>Practice real-world API automation with these endpoints:</p>
+
+  <div class="endpoint-list">
+    <div class="endpoint"><span class="method GET">GET</span> <code>/users?page=1</code></div>
+    <div class="endpoint"><span class="method GET">GET</span> <code>/users/:id</code></div>
+    <div class="endpoint"><span class="method POST">POST</span> <code>/users</code></div>
+    <div class="endpoint"><span class="method PUT">PUT</span> <code>/users/:id</code></div>
+    <div class="endpoint"><span class="method DELETE">DELETE</span> <code>/users/:id</code></div>
+    <div class="endpoint"><span class="method POST">POST</span> <code>/login</code></div>
+  </div>
+
+  <div class="footer">
+    📄 API Documentation available at <a href="/api-docs" target="_blank">/api-docs</a>
+  </div>
+
 </body>
 </html>
