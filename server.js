@@ -77,3 +77,57 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+
+// --- Additional Features ---
+
+const jwt = require('jsonwebtoken');
+const multer = require('multer');
+
+// JWT Secret Key
+const SECRET_KEY = 'ganesh-api-secret';
+
+// Dummy auth login
+app.post('/auth/login', (req, res) => {
+  const { email, password } = req.body;
+  if (email && password) {
+    const token = jwt.sign({ email }, SECRET_KEY, { expiresIn: '1h' });
+    return res.json({ token });
+  }
+  return res.status(400).json({ error: 'Missing credentials' });
+});
+
+// Auth middleware
+const authenticate = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  if (!authHeader) return res.status(401).json({ error: 'No token provided' });
+  const token = authHeader.split(' ')[1];
+  jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    if (err) return res.status(403).json({ error: 'Invalid token' });
+    req.user = decoded;
+    next();
+  });
+};
+
+// Protected profile route
+app.get('/profile', authenticate, (req, res) => {
+  res.json({ message: 'Welcome to your profile', user: req.user });
+});
+
+// File upload setup
+const upload = multer({ dest: 'uploads/' });
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.json({ message: 'File uploaded', file: req.file });
+});
+
+// User search by name
+app.get('/users/search', (req, res) => {
+  const { name } = req.query;
+  const matched = users.filter(user => user.name.toLowerCase().includes(name.toLowerCase()));
+  res.json({ results: matched });
+});
+
+// Simulate server error
+app.get('/fail', (req, res) => {
+  res.status(500).json({ error: 'Internal Server Error (Simulated)' });
+});

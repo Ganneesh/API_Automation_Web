@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ganesh API Automation Hub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #1e1e2f;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #1e1e2f;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 5px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    code {
+      background: #eef;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+    }
+    a.button {
+      display: inline-block;
+      background: #1e88e5;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+    footer {
+      background: #eee;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ganesh API Automation Hub 🚀</h1>
+    <p>Practice APIs for QA testers – with Auth, File Upload, Search & More</p>
+  </header>
+  <main>
+    <section>
+      <h2>🔐 Authentication</h2>
+      <ul>
+        <li><code>POST /auth/login</code> - Login and receive token</li>
+        <li><code>GET /profile</code> - Access secured user profile</li>
+      </ul>
+    </section>
+    <section>
+      <h2>👤 User Management</h2>
+      <ul>
+        <li><code>GET /users?page=1</code> - Paginated user list</li>
+        <li><code>GET /users/:id</code> - Get user by ID</li>
+        <li><code>POST /users</code> - Create new user</li>
+        <li><code>PUT /users/:id</code> - Update user</li>
+        <li><code>PATCH /users/:id</code> - Partially update user</li>
+        <li><code>DELETE /users/:id</code> - Delete user</li>
+        <li><code>GET /users/search?name=ganesh</code> - Search user by name</li>
+      </ul>
+    </section>
+    <section>
+      <h2>📤 File Upload</h2>
+      <ul>
+        <li><code>POST /upload</code> - Upload a file</li>
+      </ul>
+    </section>
+    <section>
+      <h2>🧪 Testing Utilities</h2>
+      <ul>
+        <li><code>GET /delayed</code> - Simulate delayed response</li>
+        <li><code>GET /fail</code> - Simulate 500 error</li>
+      </ul>
+    </section>
+    <section>
+      <a href="/api-docs" class="button" target="_blank">📄 View Swagger Docs</a>
+    </section>
+  </main>
+  <footer>
+    © 2025 Ganesh Shivdas Madane — Built for Automation Practice ❤️
+  </footer>
+</body>
+</html>
