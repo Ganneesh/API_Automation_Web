@@ -61,6 +61,27 @@
     a:hover {
       text-decoration: underline;
     }
+    .basics {
+      margin-top: 3rem;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .basics h2 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .basics h3 {
+      color: #444;
+      margin-top: 1rem;
+    }
+    .basics pre {
+      background-color: #f1f3f5;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
   </style>
 </head>
 <body>
@@ -80,6 +101,47 @@
 
   <div class="footer">
     📄 Swagger Docs: <a href="/api-docs">/api-docs</a>
+  </div>
+
+  <div class="basics">
+    <h2>📚 REST API Basics</h2>
+
+    <h3>1. HTTP Methods</h3>
+    <ul>
+      <li><strong>GET</strong> – Retrieve data (e.g., fetch users)</li>
+      <li><strong>POST</strong> – Create new data (e.g., register, login)</li>
+      <li><strong>PUT</strong> – Replace existing data (full update)</li>
+      <li><strong>PATCH</strong> – Update part of existing data</li>
+      <li><strong>DELETE</strong> – Remove data</li>
+    </ul>
+
+    <h3>2. Path vs Query Parameters</h3>
+    <ul>
+      <li><strong>Path Param:</strong> <code>/users/123</code> → ID is part of URL</li>
+      <li><strong>Query Param:</strong> <code>/users?page=2</code> → filters or controls</li>
+    </ul>
+
+    <h3>3. Request Body (JSON)</h3>
+    <pre>{
+  "name": "Ganesh",
+  "email": "ganesh@example.com"
+}</pre>
+
+    <h3>4. Common Status Codes</h3>
+    <ul>
+      <li><code>200 OK</code> – Success</li>
+      <li><code>201 Created</code> – New resource added</li>
+      <li><code>400 Bad Request</code> – Invalid input</li>
+      <li><code>401 Unauthorized</code> – Token missing or invalid</li>
+      <li><code>404 Not Found</code> – Resource not found</li>
+      <li><code>500 Internal Server Error</code> – Unexpected error</li>
+    </ul>
+
+    <h3>5. Auth (Bearer Token)</h3>
+    <pre>Authorization: Bearer &lt;your_token&gt;</pre>
+
+    <h3>6. Required Headers</h3>
+    <pre>Content-Type: application/json</pre>
   </div>
 </body>
 </html>
