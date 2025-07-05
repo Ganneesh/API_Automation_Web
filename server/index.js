@@ -64,6 +64,30 @@ app.post('/login', (req, res) => {
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+app.patch('/users/:id', (req, res) => {
+  const user = users.find(u => u.id === parseInt(req.params.id));
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  const { name, email } = req.body;
+  if (name) user.name = name;
+  if (email) user.email = email;
+  res.json({ data: user });
+});
+
+app.post('/register', (req, res) => {
+  const { email, password } = req.body;
+  if (email && password) {
+    return res.status(200).json({ id: 4, token: 'QpwL5tke4Pnpja7X4' });
+  }
+  return res.status(400).json({ error: 'Missing password' });
+});
+
+app.get('/delayed', async (req, res) => {
+  setTimeout(() => {
+    res.json({ message: 'This response was delayed' });
+  }, 2000); // 2 second delay
+});
+
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

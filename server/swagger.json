@@ -5,13 +5,45 @@
     "version": "1.0.0",
     "description": "A practice API for testing and learning"
   },
+  "servers": [
+    {
+      "url": "https://api-automation-web.onrender.com"
+    }
+  ],
   "paths": {
     "/users": {
       "get": {
         "summary": "List users",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": { "type": "integer" },
+            "description": "Page number"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "A paged list of users"
+            "description": "List of users",
+            "content": {
+              "application/json": {
+                "example": {
+                  "page": 2,
+                  "per_page": 6,
+                  "total": 12,
+                  "total_pages": 2,
+                  "data": [
+                    {
+                      "id": 7,
+                      "email": "michael.lawson@reqres.in",
+                      "first_name": "Michael",
+                      "last_name": "Lawson",
+                      "avatar": "https://reqres.in/img/faces/7-image.jpg"
+                    }
+                  ]
+                }
+              }
+            }
           }
         }
       },
@@ -21,44 +53,39 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "John"
-                  },
-                  "email": {
-                    "type": "string",
-                    "example": "john@example.com"
-                  }
-                },
-                "required": [
-                  "name",
-                  "email"
-                ]
+              "example": {
+                "name": "morpheus",
+                "job": "leader"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "User created"
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "name": "morpheus",
+                  "job": "leader",
+                  "id": "65",
+                  "createdAt": "2025-07-05T09:11:29.084Z"
+                }
+              }
+            }
           }
         }
       }
     },
     "/users/{id}": {
       "get": {
-        "summary": "Get a user by ID",
+        "summary": "Get a single user",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
@@ -69,41 +96,153 @@
             "description": "User not found"
           }
         }
-      }
-    },
-    "/login": {
-      "post": {
-        "summary": "Login",
+      },
+      "put": {
+        "summary": "Update a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "example": "john@example.com"
-                  },
-                  "password": {
-                    "type": "string",
-                    "example": "123456"
-                  }
-                },
-                "required": [
-                  "email",
-                  "password"
-                ]
+              "example": {
+                "name": "updated name",
+                "job": "updated job"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Token returned"
+            "description": "User updated"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Partially update a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "job": "patch job"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User patched"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User deleted"
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "summary": "Register a new user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "email": "eve.holt@reqres.in",
+                "password": "pistol"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User registered",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 4,
+                  "token": "QpwL5tke4Pnpja7X4"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing password"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "email": "eve.holt@reqres.in",
+                "password": "cityslicka"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "example": {
+                  "token": "QpwL5tke4Pnpja7X4"
+                }
+              }
+            }
           },
           "400": {
             "description": "Missing credentials"
+          }
+        }
+      }
+    },
+    "/delayed": {
+      "get": {
+        "summary": "Delayed response example",
+        "responses": {
+          "200": {
+            "description": "Successful after delay",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "This response was delayed"
+                }
+              }
+            }
           }
         }
       }
