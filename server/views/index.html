@@ -1,26 +1,58 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ganesh API Automation Hub</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6fa;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
       padding: 2rem;
+      color: #212529;
     }
     h1 {
-      color: #4a4a4a;
+      color: #2c3e50;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
-    code {
-      background: #eaeaea;
-      padding: 4px 6px;
-      border-radius: 4px;
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
     }
     ul {
-      line-height: 1.8;
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 0.6rem 0;
+    }
+    code {
+      background-color: #e9ecef;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: Consolas, monospace;
+      font-size: 0.95rem;
+      display: inline-block;
+    }
+    .method {
+      display: inline-block;
+      width: 60px;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 4px;
+      color: white;
+      margin-right: 10px;
+    }
+    .GET { background-color: #3498db; }
+    .POST { background-color: #27ae60; }
+    .PUT { background-color: #f39c12; }
+    .PATCH { background-color: #8e44ad; }
+    .DELETE { background-color: #e74c3c; }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.95rem;
     }
     a {
       color: #007bff;
@@ -35,16 +67,19 @@
   <h1>👋 Welcome to Ganesh API Automation Hub</h1>
   <p>This is a practice site for API automation testers. Try the following endpoints:</p>
   <ul>
-    <li><code>GET /users?page=1</code></li>
-    <li><code>GET /users/:id</code></li>
-    <li><code>POST /users</code></li>
-    <li><code>PUT /users/:id</code></li>
-    <li><code>PATCH /users/:id</code></li>
-    <li><code>DELETE /users/:id</code></li>
-    <li><code>POST /login</code></li>
-    <li><code>POST /register</code></li>
-    <li><code>GET /delayed</code></li>
+    <li><span class="method GET">GET</span> <code>/users?page=1</code></li>
+    <li><span class="method GET">GET</span> <code>/users/:id</code></li>
+    <li><span class="method POST">POST</span> <code>/users</code></li>
+    <li><span class="method PUT">PUT</span> <code>/users/:id</code></li>
+    <li><span class="method PATCH">PATCH</span> <code>/users/:id</code></li>
+    <li><span class="method DELETE">DELETE</span> <code>/users/:id</code></li>
+    <li><span class="method POST">POST</span> <code>/login</code></li>
+    <li><span class="method POST">POST</span> <code>/register</code></li>
+    <li><span class="method GET">GET</span> <code>/delayed</code></li>
   </ul>
-  <p>📄 Swagger Docs: <a href="/api-docs" target="_blank">/api-docs</a></p>
+
+  <div class="footer">
+    📄 Swagger Docs: <a href="/api-docs">/api-docs</a>
+  </div>
 </body>
 </html>
